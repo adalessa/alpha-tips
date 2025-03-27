@@ -40,3 +40,15 @@ export interface User {
     updated_at: string;
     [key: string]: unknown; // This allows for additional properties...
 }
+
+interface Tip {
+    id: number;
+    title: string;
+    description: string;
+    code: string;
+    featured: boolean;
+    created_at: string;
+    benefits: string[];
+    notes: string|null;
+    explanation: string|null;
+}

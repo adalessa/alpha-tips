@@ -9,4 +9,11 @@ class Tip extends Model
 {
     /** @use HasFactory<\Database\Factories\TipFactory> */
     use HasFactory;
+
+    public function casts(): array
+    {
+        return [
+            'benefits' => 'array',
+        ];
+    }
 }

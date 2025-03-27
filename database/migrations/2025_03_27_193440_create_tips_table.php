@@ -17,6 +17,9 @@ return new class extends Migration
             $table->text('description');
             $table->text('code');
             $table->boolean('featured')->default(false);
+            $table->text('explanation')->nullable();
+            $table->text('notes')->nullable();
+            $table->json('benefits')->nullable();
             $table->timestamps();
         });
     }
