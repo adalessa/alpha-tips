@@ -46,6 +46,7 @@ interface Tip {
     title: string;
     description: string;
     code: string;
+    language: string;
     featured: boolean;
     created_at: string;
     benefits: string[];

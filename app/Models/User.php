@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,5 +45,17 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function likedTips(): BelongsToMany
+    {
+        return $this->belongsToMany(Tip::class, 'user_tips_likes')
+            ->withTimestamps();
+    }
+
+    public function savedTips(): BelongsToMany
+    {
+        return $this->belongsToMany(Tip::class, 'user_tips_saves')
+            ->withTimestamps();
     }
 }
