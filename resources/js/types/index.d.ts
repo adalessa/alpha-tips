@@ -50,6 +50,6 @@ interface Tip {
     featured: boolean;
     created_at: string;
     benefits: string[];
-    notes: string|null;
-    explanation: string|null;
+    notes: string | null;
+    explanation: string | null;
 }

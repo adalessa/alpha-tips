@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Search, Zap, Package, Keyboard, Code, Star } from "lucide-react"
+import NavBar from '@/components/nav-bar';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tip } from '@/types/index';
 import { Head, Link } from '@inertiajs/react';
-import { Tip } from "@/types/index"
-import NavBar from "@/components/nav-bar"
+import { Search } from 'lucide-react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -25,14 +25,14 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
             <NavBar />
             <div className="flex min-h-screen flex-col items-center">
                 <main className="flex-1">
-                    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted rounded-xl">
+                    <section className="bg-muted w-full rounded-xl py-12 md:py-24 lg:py-32">
                         <div className="container px-4 md:px-6">
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                                 <div className="space-y-2">
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
                                         Master Your Neovim Configuration
                                     </h1>
-                                    <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+                                    <p className="text-muted-foreground mx-auto max-w-[700px] md:text-xl">
                                         Discover the best tips, plugins, and configurations to supercharge your Neovim experience.
                                     </p>
                                 </div>
@@ -118,17 +118,17 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                 </main>
                 <footer className="border-t py-6 md:py-0">
                     <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
-                        <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+                        <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
                             Built with ❤️ for the Neovim community.
-                            <a href="#" className="font-medium underline underline-offset-4 ml-1">
+                            <a href="#" className="ml-1 font-medium underline underline-offset-4">
                                 Contribute on GitHub
                             </a>
                         </p>
                         <div className="flex items-center gap-4">
-                            <Link href="/about" className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+                            <Link href="/about" className="text-muted-foreground text-sm underline-offset-4 hover:underline">
                                 About
                             </Link>
-                            <Link href="/contact" className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+                            <Link href="/contact" className="text-muted-foreground text-sm underline-offset-4 hover:underline">
                                 Contact
                             </Link>
                         </div>
@@ -136,7 +136,7 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                 </footer>
             </div>
         </>
-    )
+    );
 }
 
 interface TipCardProps {
@@ -145,11 +145,11 @@ interface TipCardProps {
 
 function TipCard({ tip }: TipCardProps) {
     return (
-        <Card className="overflow-hidden py-4 px-4">
+        <Card className="overflow-hidden px-4 py-4">
             <CardHeader className="">
-                <CardTitle className="line-clamp-1 mt-2 flex items-center justify-between">
+                <CardTitle className="mt-2 line-clamp-1 flex items-center justify-between">
                     <Link href={`/tip/${tip.id}`}>{tip.title}</Link>
-                    <span className="text-xs text-muted-foreground">{new Date(tip.created_at).toLocaleDateString()}</span>
+                    <span className="text-muted-foreground text-xs">{new Date(tip.created_at).toLocaleDateString()}</span>
                 </CardTitle>
                 <CardDescription className="line-clamp-2">{tip.description}</CardDescription>
             </CardHeader>
@@ -164,31 +164,31 @@ function TipCard({ tip }: TipCardProps) {
                 </Button>
             </CardFooter>
         </Card>
-    )
+    );
 }
 
-interface CategoryCardProps {
-    title: string;
-    description: string;
-    icon: React.ReactNode;
-    href: string;
-}
+// interface CategoryCardProps {
+//     title: string;
+//     description: string;
+//     icon: React.ReactNode;
+//     href: string;
+// }
 
-function CategoryCard({ title, description, icon, href }: CategoryCardProps) {
-    return (
-        <Card className="overflow-hidden">
-            <Link href={href} className="block h-full">
-                <CardHeader className="p-4">
-                    <div className="flex items-center justify-center mb-2 text-primary">{icon}</div>
-                    <CardTitle className="text-center">{title}</CardTitle>
-                    <CardDescription className="text-center">{description}</CardDescription>
-                </CardHeader>
-                <CardFooter className="p-4 pt-0">
-                    <Button variant="ghost" className="w-full">
-                        Explore
-                    </Button>
-                </CardFooter>
-            </Link>
-        </Card>
-    )
-}
+// function CategoryCard({ title, description, icon, href }: CategoryCardProps) {
+//     return (
+//         <Card className="overflow-hidden">
+//             <Link href={href} className="block h-full">
+//                 <CardHeader className="p-4">
+//                     <div className="text-primary mb-2 flex items-center justify-center">{icon}</div>
+//                     <CardTitle className="text-center">{title}</CardTitle>
+//                     <CardDescription className="text-center">{description}</CardDescription>
+//                 </CardHeader>
+//                 <CardFooter className="p-4 pt-0">
+//                     <Button variant="ghost" className="w-full">
+//                         Explore
+//                     </Button>
+//                 </CardFooter>
+//             </Link>
+//         </Card>
+//     );
+// }
