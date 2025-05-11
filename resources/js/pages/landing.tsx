@@ -2,11 +2,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
 import { Search, Zap, Package, Keyboard, Code, Star } from "lucide-react"
 import { Head, Link } from '@inertiajs/react';
 import { Tip } from "@/types/index"
-import { usePage } from '@inertiajs/react'
 import NavBar from "@/components/nav-bar"
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -18,7 +16,6 @@ interface LandingProps {
 }
 
 export default function Landing({ featured, recent, popular }: LandingProps) {
-    const { auth } = usePage().props
     return (
         <>
             <Head title="Alpha Tips">
@@ -28,7 +25,7 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
             <NavBar />
             <div className="flex min-h-screen flex-col items-center">
                 <main className="flex-1">
-                    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted">
+                    <section className="w-full py-12 md:py-24 lg:py-32 bg-muted rounded-xl">
                         <div className="container px-4 md:px-6">
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                                 <div className="space-y-2">
