@@ -23,7 +23,6 @@ return new class extends Migration
             $table->json('benefits')->nullable();
             $table->timestamps();
 
-            $table->index('category');
             $table->index('language');
         });
     }
