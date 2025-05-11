@@ -89,7 +89,7 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                         </Tabs>
                     </section>
 
-                    <section className="container px-4 py-12 md:px-6">
+                    {/* <section className="container px-4 py-12 md:px-6">
                         <h2 className="text-2xl font-bold tracking-tight mb-6">Categories</h2>
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                             <CategoryCard
@@ -117,7 +117,7 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                                 href="/category/lsp"
                             />
                         </div>
-                    </section>
+                    </section> */}
                 </main>
                 <footer className="border-t py-6 md:py-0">
                     <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
@@ -148,35 +148,20 @@ interface TipCardProps {
 
 function TipCard({ tip }: TipCardProps) {
     return (
-        <Card className="overflow-hidden">
-            <CardHeader className="p-4">
-                <div className="flex items-center justify-between">
-                    <Badge
-                        variant={"destructive"
-                            //tip.category === "plugins"
-                            //  ? "default"
-                            //  : tip.category === "keymaps"
-                            //    ? "secondary"
-                            //    : tip.category === "lsp"
-                            //      ? "outline"
-                            //      : "destructive"
-                        }
-                    >
-                        {"neovim" /* tip.category*/}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">{new Date(tip.created_at).toLocaleDateString()}</span>
-                </div>
-                <CardTitle className="line-clamp-1 mt-2">
+        <Card className="overflow-hidden py-4 px-4">
+            <CardHeader className="">
+                <CardTitle className="line-clamp-1 mt-2 flex items-center justify-between">
                     <Link href={`/tip/${tip.id}`}>{tip.title}</Link>
+                    <span className="text-xs text-muted-foreground">{new Date(tip.created_at).toLocaleDateString()}</span>
                 </CardTitle>
                 <CardDescription className="line-clamp-2">{tip.description}</CardDescription>
             </CardHeader>
-            <CardContent className="p-4 pt-0">
+            <CardContent className="pt-0">
                 <SyntaxHighlighter className="rounded-xl" language="{tip.language}" style={nord}>
                     {tip.code}
                 </SyntaxHighlighter>
             </CardContent>
-            <CardFooter className="p-4 pt-0">
+            <CardFooter className="pt-0">
                 <Button variant="secondary" className="w-full" asChild>
                     <Link href={`/tip/${tip.id}`}>Read More</Link>
                 </Button>

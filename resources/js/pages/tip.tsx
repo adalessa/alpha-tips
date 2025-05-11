@@ -98,12 +98,11 @@ export default function TipPage({ tip, related, liked, saved }: TipPageProps) {
 
                     <div className="grid gap-10 md:grid-cols-[2fr_1fr]">
                         <div>
-                            <div className="mb-4 flex items-center gap-2">
-                                <Badge variant="destructive">{'neovim'}</Badge>
+                            <div className="mb-4 flex items-center justify-between gap-2">
+                                <h1 className="text-3xl font-bold mb-4">{tip.title}</h1>
                                 <span className="text-sm text-muted-foreground">{new Date(tip.created_at).toLocaleDateString()}</span>
                             </div>
 
-                            <h1 className="text-3xl font-bold mb-4">{tip.title}</h1>
                             <p className="text-lg text-muted-foreground mb-6">{tip.description}</p>
 
                             <div className="mb-8">
