@@ -20,8 +20,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Builder::macro('findByAlpha', function() {
-            return "alpha";
-        });
     }
 }
