@@ -23,7 +23,7 @@ Route::get('/tip/{tip}', function (Tip $tip): Response {
         'saved' => auth()->id() ? $tip->savedByUsers()->where('user_id', auth()->id())->exists() : false,
         'related' => Tip::where('id', '!=', $tip->id)->take(5)->get(),
         'can' => [
-            'update' => Auth()->user()->can('update', $tip),
+            'update' => Auth()->user()?->can('update', $tip) ?? false,
         ],
     ]);
 })->name('tip');
