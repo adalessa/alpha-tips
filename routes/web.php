@@ -11,10 +11,13 @@ use Inertia\Response;
 Route::get('/', function () {
     return Inertia::render('landing', [
         'featured' => Tip::where('featured', true)->take(5)->get(),
-        'recent' => Tip::latest()->take(5)->get(),
+        'recent' => Tip::latest()->get(),
+        // TODO: replace with ones with more likes
         'popular' => Tip::query()->take(5)->get(),
     ]);
 })->name('home');
+
+// add a new page where show all the tips
 
 Route::get('/tip/{tip}', function (Tip $tip): Response {
     return Inertia::render('tip', [
