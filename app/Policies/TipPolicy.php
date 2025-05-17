@@ -28,7 +28,7 @@ class TipPolicy
      */
     public function create(User $user): bool
     {
-        return $user->email_verified_at !== null;
+        return true;
     }
 
     /**
