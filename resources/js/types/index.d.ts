@@ -41,7 +41,7 @@ export interface User {
     [key: string]: unknown; // This allows for additional properties...
 }
 
-interface Tip {
+export interface Tip {
     id: number;
     title: string;
     description: string;
@@ -52,4 +52,15 @@ interface Tip {
     benefits: string[];
     notes: string | null;
     explanation: string | null;
+}
+
+export interface Link {
+    url: string | null;
+    active: boolean;
+    label: string;
+}
+
+export interface TipsPaginated {
+    data: Tip[];
+    links: Link[];
 }

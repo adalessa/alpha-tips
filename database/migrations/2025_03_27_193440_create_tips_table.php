@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->text('explanation')->nullable();
             $table->text('notes')->nullable();
             $table->json('benefits')->nullable();
+            $table->foreignIdFor(User::class);
             $table->timestamps();
 
             $table->index('language');

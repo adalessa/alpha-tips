@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Toaster } from '@/components/ui/sonner';
 import { Tip, User } from '@/types/index';
-import { Head, Link, usePage } from '@inertiajs/react';
+import { Head, Link, router, usePage } from '@inertiajs/react';
 import axios from 'axios';
-import { ArrowLeft, Bookmark, Copy, Share2, ThumbsUp } from 'lucide-react';
+import { ArrowLeft, Bookmark, Copy, Edit, Share2, ThumbsUp } from 'lucide-react';
 import { useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
@@ -16,9 +16,12 @@ interface TipPageProps {
     related: Tip[];
     liked: boolean;
     saved: boolean;
+    can: {
+        update: boolean;
+    };
 }
 
-export default function TipPage({ tip, related, liked, saved }: TipPageProps) {
+export default function TipPage({ tip, related, liked, saved, can }: TipPageProps) {
     const { auth } = usePage<{ auth: { user?: User } }>().props;
 
     const [, setCopied] = useState(false);
@@ -92,10 +95,10 @@ export default function TipPage({ tip, related, liked, saved }: TipPageProps) {
                 <main className="container flex-1 py-10">
                     <div className="mb-6">
                         <Button variant="ghost" size="sm" asChild>
-                            <Link href="/" className="flex items-center">
+                            <span onClick={() => history.back()} className="flex items-center">
                                 <ArrowLeft className="mr-2 h-4 w-4" />
                                 Back to tips
-                            </Link>
+                            </span>
                         </Button>
                     </div>
 
@@ -160,6 +163,16 @@ export default function TipPage({ tip, related, liked, saved }: TipPageProps) {
                                             <Share2 className="mr-2 h-4 w-4" />
                                             Share
                                         </Button>
+                                        {can.update && (
+                                            <Button
+                                                variant="outline"
+                                                className="col-span-2 w-full"
+                                                onClick={() => router.visit(`/dashboard/tip/${tip.id}/edit`)}
+                                            >
+                                                <Edit className="mr-2 h-4 w-4" />
+                                                Edit
+                                            </Button>
+                                        )}
                                     </div>
                                 </CardContent>
                             </Card>
@@ -186,10 +199,7 @@ export default function TipPage({ tip, related, liked, saved }: TipPageProps) {
                 <footer className="border-t py-6 md:py-0">
                     <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
                         <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
-                            Built with ❤️ for the Neovim community.
-                            <a href="#" className="ml-1 font-medium underline underline-offset-4">
-                                Contribute on GitHub
-                            </a>
+                            Built with ❤️ for the Neovim & Laravel communities.
                         </p>
                     </div>
                 </footer>

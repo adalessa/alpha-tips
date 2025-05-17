@@ -1,8 +1,7 @@
 import { User } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { Search, Terminal } from 'lucide-react';
+import { Terminal } from 'lucide-react';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
 
 export default function NavBar() {
     const { auth } = usePage<{ auth: { user?: User } }>().props;
@@ -14,14 +13,19 @@ export default function NavBar() {
                 </Link>
                 <div className="flex flex-1 items-center justify-end space-x-4">
                     <nav className="flex items-center space-x-2">
-                        <div className="relative w-full max-w-sm">
-                            <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" />
-                            <Input type="search" placeholder="Search tips..." className="w-full rounded-md border pl-8 md:w-[300px] lg:w-[300px]" />
-                        </div>
+                        {/* <div className="relative w-full max-w-sm"> */}
+                        {/*     <Search className="text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4" /> */}
+                        {/*     <Input type="search" placeholder="Search tips..." className="w-full rounded-md border pl-8 md:w-[300px] lg:w-[300px]" /> */}
+                        {/* </div> */}
                         {auth.user ? (
-                            <Button variant="secondary" asChild>
-                                <Link href="/settings/profile">{auth.user.name}</Link>
-                            </Button>
+                            <>
+                                <Button variant="secondary" asChild>
+                                    <Link href="/dashboard">Dashboard</Link>
+                                </Button>
+                                <Button variant="secondary" asChild>
+                                    <Link href="/settings/profile">{auth.user.name}</Link>
+                                </Button>
+                            </>
                         ) : (
                             <Button variant="link" asChild>
                                 <Link href="/login">Login</Link>

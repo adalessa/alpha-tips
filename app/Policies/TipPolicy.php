@@ -12,7 +12,7 @@ class TipPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -20,7 +20,7 @@ class TipPolicy
      */
     public function view(User $user, Tip $tip): bool
     {
-        return false;
+        return $user->id === $tip->user_id;
     }
 
     /**
@@ -28,7 +28,7 @@ class TipPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->email_verified_at !== null;
     }
 
     /**
@@ -36,7 +36,7 @@ class TipPolicy
      */
     public function update(User $user, Tip $tip): bool
     {
-        return false;
+        return $user->id === $tip->user_id;
     }
 
     /**
@@ -44,7 +44,7 @@ class TipPolicy
      */
     public function delete(User $user, Tip $tip): bool
     {
-        return false;
+        return $user->id === $tip->user_id;
     }
 
     /**

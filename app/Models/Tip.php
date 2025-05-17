@@ -11,6 +11,16 @@ class Tip extends Model
     /** @use HasFactory<\Database\Factories\TipFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'code',
+        'language',
+        'benefits',
+        'notes',
+        'explanation',
+    ];
+
     public function casts(): array
     {
         return [

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TipController;
 use App\Http\Controllers\UserLikeTipController;
 use App\Http\Controllers\UserSaveTipController;
 use App\Models\Tip;
@@ -21,6 +22,9 @@ Route::get('/tip/{tip}', function (Tip $tip): Response {
         'liked' => auth()->id() ? $tip->likedByUsers()->where('user_id', auth()->id())->exists() : false,
         'saved' => auth()->id() ? $tip->savedByUsers()->where('user_id', auth()->id())->exists() : false,
         'related' => Tip::where('id', '!=', $tip->id)->take(5)->get(),
+        'can' => [
+            'update' => Auth()->user()->can('update', $tip),
+        ],
     ]);
 })->name('tip');
 
@@ -38,6 +42,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('tip.save');
     Route::delete('tip/{tip}/save', [UserSaveTipController::class, 'destroy'])
         ->name('tip.unsaved');
+
+    Route::resource('dashboard/tip', TipController::class)
+        ->parameters(['tip' => 'tip']);
 });
 
 require __DIR__.'/settings.php';

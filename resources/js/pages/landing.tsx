@@ -1,11 +1,9 @@
 import NavBar from '@/components/nav-bar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Tip } from '@/types/index';
 import { Head, Link } from '@inertiajs/react';
-import { Search } from 'lucide-react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
@@ -30,21 +28,22 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
                                 <div className="space-y-2">
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                                        Master Your Neovim Configuration
+                                        Tips & Snippets for all devs
                                     </h1>
                                     <p className="text-muted-foreground mx-auto max-w-[700px] md:text-xl">
-                                        Discover the best tips, plugins, and configurations to supercharge your Neovim experience.
+                                        Discover tips, snippets, and tricks to enhance your development experience. Share your own tips and learn from
+                                        the community.
                                     </p>
                                 </div>
-                                <div className="w-full max-w-sm space-y-2">
-                                    <div className="flex space-x-2">
-                                        <Input placeholder="Search for tips..." />
-                                        <Button type="submit">
-                                            <Search className="mr-2 h-4 w-4" />
-                                            Search
-                                        </Button>
-                                    </div>
-                                </div>
+                                {/* <div className="w-full max-w-sm space-y-2"> */}
+                                {/*     <div className="flex space-x-2"> */}
+                                {/*         <Input placeholder="Search for tips..." /> */}
+                                {/*         <Button type="submit"> */}
+                                {/*             <Search className="mr-2 h-4 w-4" /> */}
+                                {/*             Search */}
+                                {/*         </Button> */}
+                                {/*     </div> */}
+                                {/* </div> */}
                             </div>
                         </div>
                     </section>
@@ -119,19 +118,16 @@ export default function Landing({ featured, recent, popular }: LandingProps) {
                 <footer className="border-t py-6 md:py-0">
                     <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
                         <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
-                            Built with ❤️ for the Neovim community.
-                            <a href="#" className="ml-1 font-medium underline underline-offset-4">
-                                Contribute on GitHub
-                            </a>
+                            Built with ❤️ for the Neovim & Laravel communities.
                         </p>
-                        <div className="flex items-center gap-4">
-                            <Link href="/about" className="text-muted-foreground text-sm underline-offset-4 hover:underline">
-                                About
-                            </Link>
-                            <Link href="/contact" className="text-muted-foreground text-sm underline-offset-4 hover:underline">
-                                Contact
-                            </Link>
-                        </div>
+                        {/* <div className="flex items-center gap-4"> */}
+                        {/*     <Link href="/about" className="text-muted-foreground text-sm underline-offset-4 hover:underline"> */}
+                        {/*         About */}
+                        {/*     </Link> */}
+                        {/*     <Link href="/contact" className="text-muted-foreground text-sm underline-offset-4 hover:underline"> */}
+                        {/*         Contact */}
+                        {/*     </Link> */}
+                        {/* </div> */}
                     </div>
                 </footer>
             </div>
