@@ -3,6 +3,7 @@
 use App\Http\Controllers\TipController;
 use App\Http\Controllers\UserLikeTipController;
 use App\Http\Controllers\UserSaveTipController;
+use App\Http\Middleware\IncrementTipViews;
 use App\Models\Tip;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -33,7 +34,7 @@ Route::get('/tip/{tip}', function (Tip $tip): Response {
             'update' => Auth()->user()?->can('update', $tip) ?? false,
         ],
     ]);
-})->name('tip');
+})->middleware(IncrementTipViews::class)->name('tip');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
