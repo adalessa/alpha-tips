@@ -63,4 +63,9 @@ export interface Link {
 export interface TipsPaginated {
     data: Tip[];
     links: Link[];
+    total: number;
+    from: number;
+    to: number;
+    current_page: number;
+    last_page: number;
 }

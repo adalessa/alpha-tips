@@ -1,4 +1,4 @@
-import CodeBlock from '@/components/code';
+import { CodeBlock } from '@/components/code';
 import AppLayout from '@/layouts/app-layout';
 import { BreadcrumbItem, Tip } from '@/types';
 import { Head, Link } from '@inertiajs/react';
