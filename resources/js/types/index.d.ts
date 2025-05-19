@@ -52,6 +52,7 @@ export interface Tip {
     benefits: string[];
     notes: string | null;
     explanation: string | null;
+    views: number;
 }
 
 export interface Link {
