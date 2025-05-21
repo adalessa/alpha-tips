@@ -35,6 +35,7 @@ export default function Tips({ tips }: TipsPageProps) {
                             <th className="text-primary px-6 py-3 text-left text-sm font-medium">Description</th>
                             <th className="text-primary px-6 py-3 text-left text-sm font-medium">Language</th>
                             <th className="text-primary px-6 py-3 text-left text-sm font-medium">Created At</th>
+                            <th className="text-primary px-6 py-3 text-left text-sm font-medium">Views</th>
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-600 bg-gray-800">
@@ -45,6 +46,7 @@ export default function Tips({ tips }: TipsPageProps) {
                                 <td className="px-6 py-4 text-sm text-gray-200">{tip.description}</td>
                                 <td className="px-6 py-4 text-sm text-gray-200">{tip.language}</td>
                                 <td className="px-6 py-4 text-sm text-gray-200">{new Date(tip.created_at).toLocaleDateString()}</td>
+                                <td className="px-6 py-4 text-sm text-gray-200">{tip.views}</td>
                             </tr>
                         ))}
                     </tbody>

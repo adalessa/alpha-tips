@@ -13,19 +13,13 @@ use Inertia\Response;
 
 class TipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(): Response
+    public function index(#[CurrentUser] User $user): Response
     {
         return Inertia::render('tip/index', [
-            'tips' => auth()->user()->tips()->latest()->paginate(10),
+            'tips' => $user->tips()->latest()->paginate(10),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(): Response
     {
         Gate::authorize('create', Tip::class);
@@ -33,9 +27,6 @@ class TipController extends Controller
         return Inertia::render('tip/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request, #[CurrentUser] User $user): RedirectResponse
     {
         Gate::authorize('create', Tip::class);
@@ -59,9 +50,6 @@ class TipController extends Controller
             ->with('success', 'Tip created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Tip $tip): Response
     {
         return Inertia::render('tip/show', [
@@ -69,10 +57,7 @@ class TipController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Tip $tip)
+    public function edit(Tip $tip): Response
     {
         Gate::authorize('update', $tip);
 
@@ -81,9 +66,6 @@ class TipController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Tip $tip): RedirectResponse
     {
         Gate::authorize('update', $tip);
@@ -109,11 +91,14 @@ class TipController extends Controller
             ->with('success', 'Tip updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Tip $tip)
+    public function destroy(Tip $tip): RedirectResponse
     {
-        //
+        Gate::authorize('delete', $tip);
+
+        $tip->delete();
+
+        return redirect()
+            ->route('tip.index')
+            ->with('success', 'Tip deleted successfully.');
     }
 }
