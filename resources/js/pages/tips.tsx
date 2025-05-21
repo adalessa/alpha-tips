@@ -1,11 +1,11 @@
-import NavBar from "@/components/nav-bar";
-import { TipCard } from "@/components/tip";
-import { Button } from "@/components/ui/button";
-import { TipsPaginated } from "@/types";
-import { Head, Link, router } from "@inertiajs/react";
+import NavBar from '@/components/nav-bar';
+import { TipCard } from '@/components/tip';
+import { Button } from '@/components/ui/button';
+import { TipsPaginated } from '@/types';
+import { Head, Link, router } from '@inertiajs/react';
 
 interface TipsProps {
-    tips: TipsPaginated
+    tips: TipsPaginated;
 }
 
 export default function Tips({ tips }: TipsProps) {
@@ -18,29 +18,29 @@ export default function Tips({ tips }: TipsProps) {
 
             <div className="flex min-h-screen flex-col">
                 <NavBar />
-                <main className="flex-1 container py-10">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <main className="container flex-1 py-10">
+                    <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
                         <div>
-                            <h1 className="text-3xl font-bold mb-2">Browse All Tips</h1>
+                            <h1 className="mb-2 text-3xl font-bold">Browse All Tips</h1>
                             <p className="text-muted-foreground">Discover {tips.total} tips and tricks</p>
                         </div>
                     </div>
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-                        <div className="text-sm text-muted-foreground">
+                    <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+                        <div className="text-muted-foreground text-sm">
                             Showing {tips.from}-{tips.to} of {tips.total} tips
                         </div>
                     </div>
                     {tips.data.length > 0 ? (
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-8">
+                        <div className="mb-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             {tips.data.map((tip) => (
                                 <TipCard key={tip.id} tip={tip} />
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center py-12">
-                            <h3 className="text-lg font-medium mb-2">No tips found</h3>
+                        <div className="py-12 text-center">
+                            <h3 className="mb-2 text-lg font-medium">No tips found</h3>
                             <p className="text-muted-foreground mb-4">Try adjusting your search or filter criteria</p>
-                            <Button onClick={() => router.visit("/tips")}>View All Tips</Button>
+                            <Button onClick={() => router.visit('/tips')}>View All Tips</Button>
                         </div>
                     )}
                     <div className="py-10 text-center">
@@ -64,5 +64,5 @@ export default function Tips({ tips }: TipsProps) {
                 </main>
             </div>
         </>
-    )
+    );
 }

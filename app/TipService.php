@@ -11,8 +11,7 @@ class TipService
      */
     public function __construct(
         private readonly UserService $userService,
-    ) {
-    }
+    ) {}
 
     public function isLiked(Tip $tip): bool
     {

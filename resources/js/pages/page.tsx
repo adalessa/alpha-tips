@@ -19,7 +19,7 @@ export default function Home({ featured, recent, popular }: HomeProps) {
             </Head>
             <div className="flex min-h-screen flex-col">
                 <NavBar />
-                <main className="flex-1 w-full">
+                <main className="w-full flex-1">
                     <section className="bg-muted w-full py-12 md:py-24 lg:py-32">
                         <div className="container px-4 md:px-6">
                             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -122,8 +122,6 @@ export default function Home({ featured, recent, popular }: HomeProps) {
         </>
     );
 }
-
-
 
 // interface CategoryCardProps {
 //     title: string;

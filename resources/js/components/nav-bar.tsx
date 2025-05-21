@@ -1,6 +1,6 @@
 import { User } from '@/types';
 import { Link, usePage } from '@inertiajs/react';
-import { List, Star, Terminal } from 'lucide-react';
+import { List, Terminal } from 'lucide-react';
 import { Button } from './ui/button';
 
 /**
@@ -38,9 +38,9 @@ import { Button } from './ui/button';
 export default function NavBar() {
     const { auth } = usePage<{ auth: { user?: User } }>().props;
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur">
             <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                     <Terminal className="h-6 w-6" />
                     <span className="hidden font-bold sm:inline-block">Alpha Tips</span>
                 </div>

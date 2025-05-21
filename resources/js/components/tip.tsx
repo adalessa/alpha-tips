@@ -1,8 +1,8 @@
-import { Tip } from "@/types";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { Link } from "@inertiajs/react";
-import { Button } from "./ui/button";
-import { CodeBlock } from "./code";
+import { Tip } from '@/types';
+import { Link } from '@inertiajs/react';
+import { CodeBlock } from './code';
+import { Button } from './ui/button';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 
 interface TipCardProps {
     tip: Tip;

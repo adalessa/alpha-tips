@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Tip;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 test('it increments tip views when accessing a tip', function () {
     // Arrange: Create a tip

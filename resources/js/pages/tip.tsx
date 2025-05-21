@@ -107,7 +107,7 @@ export default function TipPage({ tip, related, liked, saved, can }: TipPageProp
                             <div className="mb-4 flex items-center justify-between gap-2">
                                 <h1 className="mb-4 text-3xl font-bold">{tip.title}</h1>
                                 <span className="text-muted-foreground text-sm">{new Date(tip.created_at).toLocaleDateString()}</span>
-                                <span className="text-muted-foreground text-sm ml-4">{tip.views} views</span>
+                                <span className="text-muted-foreground ml-4 text-sm">{tip.views} views</span>
                             </div>
 
                             <p className="text-muted-foreground mb-6 text-lg">{tip.description}</p>
