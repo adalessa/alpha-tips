@@ -1,3 +1,4 @@
+import { CodeBlock } from '@/components/code';
 import NavBar from '@/components/nav-bar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -7,8 +8,6 @@ import { Head, Link, router, usePage } from '@inertiajs/react';
 import axios from 'axios';
 import { ArrowLeft, Bookmark, Copy, Edit, Share2, ThumbsUp } from 'lucide-react';
 import { useState } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { toast } from 'sonner';
 
 interface TipPageProps {
@@ -118,9 +117,7 @@ export default function TipPage({ tip, related, liked, saved, can }: TipPageProp
                                         <Button variant="ghost" size="icon" className="absolute top-2 right-2" onClick={() => copyCode(tip.code)}>
                                             <Copy className="h-4 w-4" />
                                         </Button>
-                                        <SyntaxHighlighter className="rounded-xl" language="{tip.language}" style={nord}>
-                                            {tip.code}
-                                        </SyntaxHighlighter>
+                                        <CodeBlock tip={tip}/>
                                     </CardContent>
                                 </Card>
                             </div>

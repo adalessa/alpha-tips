@@ -16,7 +16,8 @@ class TipService
     public function isLiked(Tip $tip): bool
     {
         $user = $this->userService->getCurrentUser();
-        match (true) {
+
+        return match (true) {
             $user && $tip->likedByUsers()->where('user_id', $user->id)->exists() => true,
             default => false,
         };
@@ -25,7 +26,8 @@ class TipService
     public function isSaved(Tip $tip): bool
     {
         $user = $this->userService->getCurrentUser();
-        match (true) {
+
+        return match (true) {
             $user && $tip->savedByUsers()->where('user_id', $user->id)->exists() => true,
             default => false,
         };
